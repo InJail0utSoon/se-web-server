@@ -6,19 +6,19 @@ from .stop_words import stop_words
 
 @api_view(['GET'])
 def search(request, query):
-    parsed_query = query.split(' ')
-    filtered_query = []
+    # parsed_query = query.split(' ')
+    # filtered_query = []
 
-    for word in parsed_query:
-        if word not in stop_words:
-            filtered_query.append(word)
+    # for word in parsed_query:
+        # if word not in stop_words:
+            # filtered_query.append(word)
 
-    joined_filtered_query = ""
-    for item in filtered_query:
-        joined_filtered_query += item
-    res = query_es(joined_filtered_query)
-    original_res = query_es(query)
-    return Response(res+original_res)
+    # joined_filtered_query = ""
+    # for item in filtered_query:
+        # joined_filtered_query += item
+    # res = query_es(joined_filtered_query)
+    response = query_es(query)
+    return Response(response)
 
 
 @api_view(['GET'])
